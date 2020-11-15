@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\zilol\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\zilol\\.nuget\\packages"
+    ]
+  }
+}

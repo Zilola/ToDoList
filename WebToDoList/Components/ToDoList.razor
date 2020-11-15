@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using WebToDoList.Models
+@using WebToDoList.Services
+@inject JsonListService ListService
+
+
+
+<style>
+.Btn:hover{
+    background-color:azure;
+}
+    </style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @*<div class="card">*@
+
+
+            <input class="form-control" placeholder="Type here" @bind="newTodo" style="background-color:lightcyan" />
+
+            @*</div>*@
+            <div class="text-xl-right">
+                <button @onclick="AddToDo" style="color:darkcyan" class="Btn">Add Tasks </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@foreach (var list in ListService.GetLists())
+{
+    <div class="card">
+
+        @list.Description
+    </div>
+}*@
+
+
+
+@foreach (var todo in todos)
+{
+    <div class="card">
+        @todo.Description
+        <div class="text-sm-right">
+            <button style="color:darkcyan" class="Btn" @onclick="CancelToDo">X</button>
+        </div>
+    </div>
+}
+
+
+@code {
+
+    private List<ListTask> todos = new List<ListTask>();
+
+
+
+    private string newTodo;
+
+    private void AddToDo()
+    {
+
+        if (!string.IsNullOrWhiteSpace(newTodo))
+        {
+
+            todos.Add(new ListTask { Description = newTodo });
+            newTodo = string.Empty;
+
+            
+        }
+
+    }
+
+    private void CancelToDo()
+    {
+        if (string.IsNullOrWhiteSpace(newTodo))
+        {
+            int i = 0;
+                this.todos.RemoveAt(i);             
+}
+           
+    }
+
+
+}
+

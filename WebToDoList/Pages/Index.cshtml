@@ -1,0 +1,19 @@
+﻿@page
+@using WebToDoList.Components
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Organize your to-do list, your way.</h1>
+</div>
+    <p  style="text-decoration-style:wavy">Today is @DateTime.Now</p>
+
+@(await Html.RenderComponentAsync<ToDoList>(RenderMode.ServerPrerendered)  )
+
+
+
+<script src="_framework/blazor.server.js"></script>
+
+
